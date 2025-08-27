@@ -1,17 +1,19 @@
 import { PrismaClient } from "@prisma/client";
 
-import { env } from "@/env";
+function normalizeDbUrl(url?: string) {
+  if (!url) return url;
+  const u = new URL(url);
+  if (u.host.includes("pooler.supabase.com")) {
+    const set = (k: string, v: string) => { if (!u.searchParams.has(k)) u.searchParams.set(k, v); };
+    set("pgbouncer", "true");
+    set("connection_limit", "1");
+    set("sslmode", "require");
+    set("statement_cache_size", "0");
+  }
+  return u.toString();
+}
 
-const createPrismaClient = () =>
-  new PrismaClient({
-    log:
-      env.NODE_ENV === "development" ? ["query", "error", "warn"] : ["error"],
-  });
-
-const globalForPrisma = globalThis as unknown as {
-  prisma: ReturnType<typeof createPrismaClient> | undefined;
-};
-
-export const db = globalForPrisma.prisma ?? createPrismaClient();
-
-if (env.NODE_ENV !== "production") globalForPrisma.prisma = db;
+export const db = new PrismaClient({
+  log: ["error", "warn"],
+  datasources: { db: { url: normalizeDbUrl(process.env.DATABASE_URL) } },
+});
