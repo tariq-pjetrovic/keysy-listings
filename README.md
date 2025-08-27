@@ -6,7 +6,7 @@ A simple full-stack web application built with the **T3 Stack**:
 The app connects to a Supabase database, fetches car listings through a tRPC API, and displays them on a `/listings` page.
 It is deployed on [Render](https://render.com).
 
-Live Webpage: [https://keysy-listings.onrender.com/listings](https://keysy-listings.onrender.com/)
+Live Webpage: [https://keysy-listings.onrender.com](https://keysy-listings.onrender.com/)
 Github repository: [https://github.com/tariq-pjetrovic/keysy-listings](https://github.com/tariq-pjetrovic/keysy-listings)
 
 ---
