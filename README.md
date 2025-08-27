@@ -1,29 +1,59 @@
-# Create T3 App
+# Keysy Listings App
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+A simple full-stack web application built with the **T3 Stack**:
+**Next.js, TypeScript, Prisma, tRPC, TailwindCSS, and Supabase (PostgreSQL).**
 
-## What's next? How do I make an app with this?
+The app connects to a Supabase database, fetches car listings through a tRPC API, and displays them on a `/listings` page.
+It is deployed on [Render](https://render.com).
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+---
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## Features
+- **Supabase PostgreSQL** database with a `listings` table:
+  - `id` (UUID, primary key)
+  - `make` (string)
+  - `model` (string)
+  - `year` (integer)
+  - `price` (integer)
+- **Prisma ORM** for type-safe DB access.
+- **tRPC Router** with a `list` endpoint to fetch listings.
+- **Next.js App Router frontend** with a `/listings` page.
+- **Deployed on Render** with environment variables for DB access.
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+---
 
-## Learn More
+## Tech Stack
+- [Next.js](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [tRPC](https://trpc.io/)
+- [Prisma](https://www.prisma.io/)
+- [Supabase](https://supabase.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Render](https://render.com/)
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+---
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+## Getting Started
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+### 1. Clone the repository
+```bash
+git clone https://github.com/tariq-pjetrovic/keysy-listings.git
+cd keysy-listings
+```
 
-## How do I deploy this?
+### 2. Install dependencies
+```bash
+npm install
+```
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+### 3. Configure environment variables
+```env
+DATABASE_URL="postgresql:513290914587@hsil45//postgres:@aws-1-us-east-1.pooler.supabase.com:6543/postgres?pgbouncer=true&connection_limit=1&sslmode=require"
+SKIP_ENV_VALIDATION=true
+```
+
+### 4. Run locally
+```bash
+npm run dev
+```
+### 5. Open http://localhost:3000/listings
