@@ -51,8 +51,7 @@ npm install
 
 ### 3. Configure environment variables
 ```env
-DATABASE_URL="postgresql:513290914587@hsil45//postgres:@aws-1-us-east-1.pooler.supabase.com:6543/postgres?pgbouncer=true&connection_limit=1&sslmode=require"
-SKIP_ENV_VALIDATION=true
+DATABASE_URL="postgresql://postgres.rsdlxyxjedpbkjnwjcpm:513290914587@hsil45@aws-1-us-east-1.pooler.supabase.com:6543/postgres"
 ```
 
 ### 4. Run locally
